@@ -27,6 +27,11 @@ class LcSocios {
           'type'       => 'text',
         ) );
         $cmb_socios->add_field( array(
+          'name'       => esc_html__( 'Web', 'cmb2' ),
+          'id'         => $prefix.'web',
+          'type'       => 'text',
+        ) );
+        $cmb_socios->add_field( array(
           'name'       => esc_html__( 'Dirección', 'cmb2' ),
           'id'         => $prefix.'address',
           'type'       => 'text',
@@ -80,12 +85,19 @@ class LcSocios {
         $output = '';
         ob_start();
         ?>
-          <div id="root"><b>loading...</b></div>
+          <div id="root"></div>
         <?
         $output = ob_get_clean();
         $buildpro = str_contains($_SERVER['HTTP_REFERER'], 'buildpro');
+
         
         // $cssFile = scandir(plugins_url('/frontend/build/static/css/'));
+        // if(is_dir(plugins_url('lc-socios/frontend/build/static/css/'))) {
+        //   $archivos = scandir(plugins_url('/frontend/build/static/css/'));
+        //   // ...
+        // } else {
+        //     echo "El directorio no existe o no se tiene permisos para acceder a él";
+        // }
 
         // foreach($cssFile as $archivo) {
         //     if (!is_dir($archivo)) {
@@ -94,9 +106,9 @@ class LcSocios {
         // }
 
 
-        if($_GET['buildpro'] || ($_SERVER['SERVER_NAME'] === 'aesiguenza.es')) {
-          wp_register_style('lcLoadSociosModuleStyle', esc_url(plugins_url('/frontend/build/static/css/main.9d3d1ef2.css', dirname(__FILE__) )), true);
-          wp_register_script('lcLoadSociosModule', esc_url(plugins_url('/frontend/build/static/js/main.f77d6b1c.js', dirname(__FILE__) )), true);
+        if($_GET['buildpro'] || (($_SERVER['SERVER_NAME'] === 'aesiguenza.es' && $_SERVER['REQUEST_URI'] === '/website/socios/' && $_SERVER['REQUEST_URI'] === '/socios/'))) {
+          wp_register_style('lcLoadSociosModuleStyle', esc_url(plugins_url('/frontend/build/static/css/main.c83fb7d0.css', dirname(__FILE__) )), true);
+          wp_register_script('lcLoadSociosModule', esc_url(plugins_url('/frontend/build/static/js/main.f659b0a4.js', dirname(__FILE__) )), true);
           wp_register_script('lcLoadSociosModule', esc_url(plugins_url('/frontend/build/static/js/787.2ede73bf.chunk.js', dirname(__FILE__) )), true);
         }else{
           wp_register_script('lcLoadSociosModule', 'http://localhost:3000/static/js/bundle.js', true);

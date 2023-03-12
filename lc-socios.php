@@ -39,7 +39,7 @@ function getPostContent () {
       array(
         'taxonomy' => 'sector',
         'field'    => 'slug',
-        'terms'    => ($postSector === 'todos' || $postSector === '') ? array("Industria", "Construcción","Servicios", "Comercio") : $postSector,
+        'terms'    => ($postSector === 'todos' || $postSector === '') ? array("Industria", "Construcción","Servicios", "Comercio", "Turismo") : $postSector,
       ),
       // array(
       //   'taxonomy' => 'actividades',
@@ -105,6 +105,7 @@ function getPostContent () {
         "email" => get_post_meta($post->ID, 'lc_fields_socios_email', true),
         "phone" => get_post_meta($post->ID, 'lc_fields_socios_phone', true),
         "logo" => get_post_meta($post->ID, 'lc_fields_socios_logo', true),
+        "web" => get_post_meta($post->ID, 'lc_fields_socios_web', true),
         "maps" => get_post_meta($post->ID, 'lc_fields_socios_maps', true),
         "terminoSector" => $listTerms,
         "terminoTipo" => $listTermsTipo,
